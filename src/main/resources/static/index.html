@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cache Lab · ISWZ2202</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a href="/" class="brand">◈ CACHE LAB</a><span>UDLA / ISWZ2202</span><span id="connection" role="status">Conectando…</span></header>
+<main>
+<p class="eyebrow">DISEÑO Y ARQUITECTURA DE SOFTWARE</p>
+<h1>Menos espera.<br><em>La misma información.</em></h1>
+<p class="intro">Explora cuánto cambia el acceso a 100.000 registros cuando Spring consulta la base de datos o reutiliza una lectura en memoria.</p>
+<section class="controls" aria-label="Configurar experimento">
+<label>Registros<select id="limit"><option value="1000">1.000</option><option value="10000">10.000</option><option value="50000">50.000</option><option value="100000" selected>100.000</option></select></label>
+<label>Repeticiones<select id="runs"><option>5</option><option selected>10</option><option>20</option><option>30</option></select></label>
+<button id="compare">Comparar tiempos ↗</button><button class="secondary" id="clear">Vaciar caché</button>
+</section>
+<p id="status" role="status" aria-live="polite">Ejecuta un experimento para obtener mediciones reales de tu equipo.</p>
+<section class="metrics" aria-label="Resultados">
+<article><p>01 / SIN CACHÉ</p><h2 id="plain">— <small>ms</small></h2><span id="plainQueries">Consulta SQL en cada lectura</span></article>
+<article class="accent"><p>02 / CON CACHÉ CALIENTE</p><h2 id="cached">— <small>ms</small></h2><span id="hitQueries">Reutiliza los registros en memoria</span></article>
+<article><p>03 / ACELERACIÓN</p><h2 id="speed">— <small>×</small></h2><span id="saved">Calculada a partir de los promedios</span></article>
+</section>
+<section class="panel"><div class="section-title"><h2>El recorrido de una lectura</h2><span>TIEMPO EN EL SERVIDOR</span></div>
+<div class="bar-row"><span>Sin caché</span><div class="track"><div class="bar" id="plainBar"></div></div><b id="plainLabel">—</b></div>
+<div class="bar-row"><span>Con caché</span><div class="track"><div class="bar green" id="cachedBar"></div></div><b id="cachedLabel">—</b></div>
+<p id="cold">La primera lectura con caché todavía consulta SQL. Se muestra por separado de los aciertos.</p>
+<details><summary>Ver muestras y metodología</summary><p>Se realizan tres lecturas de calentamiento, se vacía la caché y se mide una carga inicial. Después se alterna el orden de las lecturas sin caché y con caché. El tiempo incluye JDBC y creación de objetos, pero excluye red y serialización JSON. La barra representa una escala lineal.</p><pre id="samples">Sin mediciones todavía.</pre></details></section>
+<section class="panel"><div class="section-title"><h2>Inspeccionar datos</h2><div><button class="secondary" id="readPlain">Leer sin caché</button> <button class="secondary" id="readCached">Leer con caché</button></div></div><p>Se leen todos los registros seleccionados; la respuesta devuelve una muestra de 10 para no medir una descarga masiva.</p><div class="table-wrap"><table><thead><tr><th>ID</th><th>Producto</th><th>Categoría</th><th>Precio (USD)</th></tr></thead><tbody id="rows"><tr><td colspan="4">Realiza una lectura para ver los productos.</td></tr></tbody></table></div></section>
+<footer>Java + Spring Boot · H2 · Caffeine <span>Caché por límite · TTL 10 minutos · Máximo 8 entradas</span></footer>
+</main><script src="app.js"></script>
+</body></html>

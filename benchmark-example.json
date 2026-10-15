@@ -1,0 +1,107 @@
+{
+  "limit": 100000,
+  "runs": 10,
+  "cold": {
+    "elapsedMs": 45.9302,
+    "sqlQueries": 1,
+    "records": 100000,
+    "sample": [
+      {
+        "id": 1,
+        "name": "Producto 1",
+        "category": "Hogar",
+        "price": 5.37
+      },
+      {
+        "id": 2,
+        "name": "Producto 2",
+        "category": "Deporte",
+        "price": 5.74
+      },
+      {
+        "id": 3,
+        "name": "Producto 3",
+        "category": "Libros",
+        "price": 6.11
+      },
+      {
+        "id": 4,
+        "name": "Producto 4",
+        "category": "Tecnologia",
+        "price": 6.48
+      },
+      {
+        "id": 5,
+        "name": "Producto 5",
+        "category": "Hogar",
+        "price": 6.85
+      },
+      {
+        "id": 6,
+        "name": "Producto 6",
+        "category": "Deporte",
+        "price": 7.22
+      },
+      {
+        "id": 7,
+        "name": "Producto 7",
+        "category": "Libros",
+        "price": 7.59
+      },
+      {
+        "id": 8,
+        "name": "Producto 8",
+        "category": "Tecnologia",
+        "price": 7.96
+      },
+      {
+        "id": 9,
+        "name": "Producto 9",
+        "category": "Hogar",
+        "price": 8.33
+      },
+      {
+        "id": 10,
+        "name": "Producto 10",
+        "category": "Deporte",
+        "price": 8.7
+      }
+    ]
+  },
+  "withoutCache": {
+    "samplesMs": [
+      5.7192,
+      5.1665,
+      7.1444,
+      7.6827,
+      6.8229,
+      5.0119,
+      4.963,
+      5.6696,
+      5.3229,
+      5.2407
+    ],
+    "meanMs": 5.87438,
+    "medianMs": 5.49625,
+    "sqlQueries": 10
+  },
+  "withCache": {
+    "samplesMs": [
+      0.2515,
+      0.0553,
+      0.1508,
+      0.0611,
+      0.1266,
+      0.0473,
+      0.176,
+      0.0502,
+      0.1312,
+      0.0678
+    ],
+    "meanMs": 0.11177999999999999,
+    "medianMs": 0.0972,
+    "sqlQueries": 0
+  },
+  "speedup": 52.55305063517625,
+  "savedPercent": 98.09716089187285
+}
